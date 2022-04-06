@@ -1,0 +1,30 @@
+﻿@*
+ * By: voidotexe
+ * https://www.github.com/voidotexe
+*@
+
+@model IEnumerable<VideoViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (var m in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@m.Title</h4>
+            <p class="card-text">@m.Link</p>
+            <p class="card-text">Idioma: @m.VideoLanguage | Dificuldade: @m.Difficulty</p>
+            <p class="card-text">Criação: @m.CreatedBy em @m.CreatedAt</p>
+            <div>
+                @m.TranscriptionContent
+            </div>
+            <br><br>
+            <div>
+                @m.SubtitleContent
+            </div>
+        </div>
+    </div>
+    <br><br>
+}

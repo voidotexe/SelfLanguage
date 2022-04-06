@@ -1,0 +1,45 @@
+﻿@*
+ * By: voidotexe
+ * https://www.github.com/voidotexe
+*@
+
+@model VideoViewModel
+
+<form asp-action="Video" asp-controller="Create">
+	<div>
+		<label for="video-link">Link</label>
+		<input asp-for="Link" placeholder="https://www.youtube.com/watch?v=_Yhyp-_hX2s" />
+
+		<label for="video-title">Título</label>
+		<input asp-for="Title" placeholder="Eminem - Lose Yourself [HD]" />
+
+		<label for="video-language">Idioma</label>
+		<input asp-for="VideoLanguage" placeholder="US"/>
+
+		<label for="video-difficulty">Dificuldade</label>
+		<select id="video-difficulty" asp-for="Difficulty">
+			<option value="Muito fácil">Muito fácil</option>
+			<option value="Fácil">Fácil</option>
+			<option value="Médio">Médio</option>
+			<option value="Difícil">Difícil</option>
+			<option value="Muito difícil">Muito difícil</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="transcription-content">Transcrição</label>
+		<textarea asp-for="TranscriptionContent" rows="10" placeholder="You better lose yourself in the music, the moment&#10;You own it, you better never let it go&#10;You only get one shot, do not miss your chance to blow&#10;This opportunity comes once in a lifetime, yo!"></textarea>
+	</div>
+
+	<div>
+		<label for="subtitle-content">Tradução</label>
+		<textarea asp-for="SubtitleContent" rows="10" placeholder="É melhor você se perder na música, no momento&#10;Quando alcançar, é melhor você nunca deixar escapar&#10;Você só recebe uma tentativa, não perca sua chance de estourar&#10;Essa oportunidade só vem uma vez na vida, cara!"></textarea>
+
+		<label for="subtitle-language">Idioma</label>
+		<input asp-for="SubtitleLanguage" placeholder="BR" />
+	</div>
+
+	<div>
+		<button id="create-video-button" type="submit">Criar</button>
+	</div>
+</form>
