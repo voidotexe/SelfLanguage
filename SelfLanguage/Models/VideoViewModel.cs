@@ -28,6 +28,8 @@ namespace SelfLanguage.Models
 		[MaxLength(13)]
         public string Difficulty { get; set; }
 
+		public string VideoImage { get; set; }
+
 		// Transcription
 
 		[Required]

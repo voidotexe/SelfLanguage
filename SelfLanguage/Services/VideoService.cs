@@ -16,13 +16,13 @@ namespace SelfLanguage.Services
     {
         public IEnumerable<VideoViewModel> Videos { get; set; }
 
-        public async Task<string> CallVideoApi(Video video)
+        public async Task<string> PostVideoApi(Video video)
         {
             string json = JsonConvert.SerializeObject(video);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:44379/video/post", content);
+            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:5002/video/post", content);
 
             return await response.Content.ReadAsStringAsync();
         }
@@ -31,11 +31,18 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:44379/video/get");
+            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:5002/video/get");
 
             string json = await response.Content.ReadAsStringAsync();
 
             Videos = JsonConvert.DeserializeObject<IEnumerable<VideoViewModel>>(json);
+
+            foreach (var video in Videos)
+            {
+                var youtubeVideoId = video.Link.Replace("https://www.youtube.com/watch?v=", "");
+
+                video.VideoImage = $"https://img.youtube.com/vi/{youtubeVideoId}/hqdefault.jpg";
+            }
         }
     }
 }

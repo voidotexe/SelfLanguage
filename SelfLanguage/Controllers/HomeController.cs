@@ -3,12 +3,10 @@
  * https://www.github.com/voidotexe
 */
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SelfLanguage.Models;
 using SelfLanguage.Services;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 

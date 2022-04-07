@@ -42,7 +42,7 @@ namespace SelfLanguage.Controllers
             videoViewModel.CreatedAt = DateTime.Now;
 
             var video = new Video(videoViewModel.Title, videoViewModel.Link, videoViewModel.VideoLanguage, videoViewModel.Difficulty, videoViewModel.CreatedBy, videoViewModel.CreatedAt);
-            string videoResponse = await _videoService.CallVideoApi(video);
+            string videoResponse = await _videoService.PostVideoApi(video);
             int videoId = Convert.ToInt32(videoResponse);
 
             var transcription = new Transcription(videoId, videoViewModel.TranscriptionContent, videoViewModel.CreatedBy, videoViewModel.CreatedAt);

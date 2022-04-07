@@ -12,7 +12,7 @@ namespace SelfLanguage.Services
     public interface IVideoService
     {
         IEnumerable<VideoViewModel> Videos { get; set; }
-        Task<string> CallVideoApi(Video video);
+        Task<string> PostVideoApi(Video video);
         Task GetVideoApi();
     }
 }
