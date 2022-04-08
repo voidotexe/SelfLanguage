@@ -4,6 +4,7 @@
 */
 
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SelfLanguage.Models;
@@ -17,6 +18,7 @@ namespace SelfLanguage.Controllers
     public class CreateController : Controller
     {
         private readonly UserManager<User> _userManager;
+
         private readonly IVideoService _videoService;
         private readonly ITranscriptionService _transcriptionService;
         private readonly ISubtitleService _subtitleService;
@@ -24,6 +26,7 @@ namespace SelfLanguage.Controllers
         public CreateController(UserManager<User> userManager, IVideoService videoService, ITranscriptionService transcriptionService, ISubtitleService subtitleService)
         {
             _userManager = userManager;
+            
             _videoService = videoService;
             _transcriptionService = transcriptionService;
             _subtitleService = subtitleService;

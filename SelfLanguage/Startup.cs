@@ -76,6 +76,12 @@ namespace SelfLanguage
                 endpoints.MapRazorPages();
 
                 endpoints.MapControllerRoute(
+                    name: "video",
+                    pattern: "video/{link}",
+                    defaults: new { controller = "Video", action = "Index" }
+                );
+
+                endpoints.MapControllerRoute(
                     name: "create",
                     pattern: "create/video",
                     defaults: new { controller = "Create",  action = "Video" }

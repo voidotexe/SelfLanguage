@@ -1,0 +1,29 @@
+@*
+ * By: voidotexe
+ * https://www.github.com/voidotexe
+*@
+
+@model VideoViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="card">
+    <div class="card-body">
+        <img src="@Model.VideoImage"/>
+        <a asp-action="Index" asp-controller="Videos" asp-route-videoId="@Model">
+            <h4 class="card-title">@Model.Title</h4>
+        </a>
+        <p class="card-text">@Model.Link</p>
+        <p class="card-text">Idioma: @Model.VideoLanguage | Dificuldade: @Model.Difficulty</p>
+        <p class="card-text">Criação: @Model.CreatedBy em @Model.CreatedAt</p>
+        <div>
+            @Model.TranscriptionContent
+        </div>
+        <br>
+        <div>
+            @Model.SubtitleContent
+        </div>
+    </div>
+</div>

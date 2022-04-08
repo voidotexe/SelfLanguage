@@ -11,21 +11,17 @@
 
 @foreach (var m in Model)
 {
+    var link = m.Link.Replace("https://www.youtube.com/watch?v=", "");
     <div class="card">
         <div class="card-body">
             <img src="@m.VideoImage"/>
-            <h4 class="card-title">@m.Title</h4>
+            <a asp-action="Index" asp-controller="Video" asp-route-link="@link">
+                <h4 class="card-title">@m.Title</h4>
+            </a>
             <p class="card-text">@m.Link</p>
             <p class="card-text">Idioma: @m.VideoLanguage | Dificuldade: @m.Difficulty</p>
             <p class="card-text">Criação: @m.CreatedBy em @m.CreatedAt</p>
-            <div>
-                @m.TranscriptionContent
-            </div>
-            <br><br>
-            <div>
-                @m.SubtitleContent
-            </div>
         </div>
     </div>
-    <br><br>
+    <br>
 }

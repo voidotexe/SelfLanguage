@@ -15,6 +15,7 @@ namespace SelfLanguage.Services
     public class VideoService : IVideoService
     {
         public IEnumerable<VideoViewModel> Videos { get; set; }
+        public VideoViewModel Video { get; set; }
 
         public async Task<string> PostVideoApi(Video video)
         {
@@ -43,6 +44,20 @@ namespace SelfLanguage.Services
 
                 video.VideoImage = $"https://img.youtube.com/vi/{youtubeVideoId}/hqdefault.jpg";
             }
+        }
+
+        public async Task GetSingleVideoApi(string link)
+        {
+            var httpClient = new HttpClient();
+
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5002/video/get/{link}");
+
+            string json = await response.Content.ReadAsStringAsync();
+
+            Video = JsonConvert.DeserializeObject<VideoViewModel>(json);
+
+            var youtubeVideoId = Video.Link.Replace("https://www.youtube.com/watch?v=", "");
+            Video.VideoImage = $"https://img.youtube.com/vi/{youtubeVideoId}/hqdefault.jpg";
         }
     }
 }
