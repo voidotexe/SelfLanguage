@@ -5,9 +5,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SelfLanguage.Models;
 using SelfLanguage.Services;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace SelfLanguage.Controllers

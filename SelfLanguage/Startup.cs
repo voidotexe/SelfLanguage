@@ -82,6 +82,12 @@ namespace SelfLanguage
                 );
 
                 endpoints.MapControllerRoute(
+                    name: "favoriteVideo",
+                    pattern: "video/favoritevideo",
+                    defaults: new { controller = "Video", action = "FavoriteVideo" }
+                );
+
+                endpoints.MapControllerRoute(
                     name: "create",
                     pattern: "create/video",
                     defaults: new { controller = "Create",  action = "Video" }

@@ -6,16 +6,16 @@
 @model VideoViewModel
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Video";
 }
 
 <div class="card">
+    <img id="star" src="~/img/starOff.png" width="30" height="30" />
     <div class="card-body">
         <img src="@Model.VideoImage"/>
-        <a asp-action="Index" asp-controller="Videos" asp-route-videoId="@Model">
+        <a href="@Model.Link" target="_blank">
             <h4 class="card-title">@Model.Title</h4>
         </a>
-        <p class="card-text">@Model.Link</p>
         <p class="card-text">Idioma: @Model.VideoLanguage | Dificuldade: @Model.Difficulty</p>
         <p class="card-text">Criação: @Model.CreatedBy em @Model.CreatedAt</p>
         <div>
@@ -27,3 +27,11 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/favoriteVideo.js"></script>
+
+<script>
+    var json = { Id: 0, VideoId: @Model.VideoId, UserId: "@Model.CreatedBy" };
+
+    postFavoriteVideo(json);
+</script>

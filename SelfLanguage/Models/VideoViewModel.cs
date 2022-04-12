@@ -12,6 +12,9 @@ namespace SelfLanguage.Models
     {
 		// Video
 
+		[Key]
+		public int VideoId { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string Title { get; set; }

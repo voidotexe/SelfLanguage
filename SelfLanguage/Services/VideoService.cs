@@ -23,7 +23,7 @@ namespace SelfLanguage.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:5002/video/post", content);
+            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:44379/video/post", content);
 
             return await response.Content.ReadAsStringAsync();
         }
@@ -32,7 +32,7 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:5002/video/get");
+            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:44379/video/get");
 
             string json = await response.Content.ReadAsStringAsync();
 
@@ -50,7 +50,7 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5002/video/get/{link}");
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:44379/video/get/{link}");
 
             string json = await response.Content.ReadAsStringAsync();
 
