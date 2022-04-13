@@ -32,6 +32,7 @@ namespace SelfLanguage.Models
         public string Difficulty { get; set; }
 
 		public string VideoImage { get; set; }
+		public bool IsFavorite { get; set; }
 
 		// Transcription
 

@@ -5,6 +5,7 @@
 
 using Newtonsoft.Json;
 using SelfLanguage.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -58,6 +59,17 @@ namespace SelfLanguage.Services
 
             var youtubeVideoId = Video.Link.Replace("https://www.youtube.com/watch?v=", "");
             Video.VideoImage = $"https://img.youtube.com/vi/{youtubeVideoId}/hqdefault.jpg";
+        }
+
+        public async Task GetCheckUserHasSingleFavoriteVideoApi(int videoId, string userId)
+        {
+            var httpClient = new HttpClient();
+
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:44300/favoritevideo/get/{videoId}/{userId}");
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            Video.IsFavorite = Convert.ToBoolean(result);
         }
     }
 }

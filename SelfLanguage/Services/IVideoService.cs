@@ -16,5 +16,6 @@ namespace SelfLanguage.Services
         Task<string> PostVideoApi(Video video);
         Task GetVideoApi();
         Task GetSingleVideoApi(string link);
+        Task GetCheckUserHasSingleFavoriteVideoApi(int videoId, string userId);
     }
 }

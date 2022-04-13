@@ -10,7 +10,14 @@
 }
 
 <div class="card">
-    <img id="star" src="~/img/starOff.png" width="30" height="30" />
+    @if (Model.IsFavorite)
+    {
+        <img id="star" src="~/img/starOn.png" width="30" height="30" />
+    }
+    else
+    {
+        <img id="star" src="~/img/starOff.png" width="30" height="30" />
+    }
     <div class="card-body">
         <img src="@Model.VideoImage"/>
         <a href="@Model.Link" target="_blank">
@@ -31,7 +38,5 @@
 <script src="~/js/favoriteVideo.js"></script>
 
 <script>
-    var json = { Id: 0, VideoId: @Model.VideoId, UserId: "@Model.CreatedBy" };
-
-    postFavoriteVideo(json);
+    var favoriteVideoJson = { VideoId: @Model.VideoId, UserId: "aec17143-9289-47f1-99aa-f05d7d5769f7" };
 </script>
