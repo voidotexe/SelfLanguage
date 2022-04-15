@@ -4,22 +4,26 @@
 *@
 
 @model VideoViewModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> userManager
 
 @{
     ViewData["Title"] = "Video";
+
+    var currentUserId = userManager.GetUserId(User);
 }
 
 <div class="card">
-    @if (Model.IsFavorite)
+    @if (Model.IsFavorite == "true")
     {
         <img id="star" src="~/img/starOn.png" width="30" height="30" />
     }
-    else
+    else if (Model.IsFavorite == "false")
     {
         <img id="star" src="~/img/starOff.png" width="30" height="30" />
     }
     <div class="card-body">
-        <img src="@Model.VideoImage"/>
+        <iframe width="700" height="400" src="@Model.YoutubeEmbed"></iframe>
         <a href="@Model.Link" target="_blank">
             <h4 class="card-title">@Model.Title</h4>
         </a>
@@ -35,8 +39,8 @@
     </div>
 </div>
 
-<script src="~/js/favoriteVideo.js"></script>
-
 <script>
-    var favoriteVideoJson = { VideoId: @Model.VideoId, UserId: "aec17143-9289-47f1-99aa-f05d7d5769f7" };
+    var favoriteVideoJson = { VideoId: @Model.VideoId, UserId: "@currentUserId" };
 </script>
+
+<script src="~/js/favoriteVideo.js"></script>

@@ -24,7 +24,7 @@ namespace SelfLanguage.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:44379/video/post", content);
+            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:5002/video/post", content);
 
             return await response.Content.ReadAsStringAsync();
         }
@@ -33,7 +33,7 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:44379/video/get");
+            HttpResponseMessage response = await httpClient.GetAsync("https://localhost:5002/video/get");
 
             string json = await response.Content.ReadAsStringAsync();
 
@@ -51,13 +51,15 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:44379/video/get/{link}");
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5002/video/get/{link}");
 
             string json = await response.Content.ReadAsStringAsync();
 
             Video = JsonConvert.DeserializeObject<VideoViewModel>(json);
 
             var youtubeVideoId = Video.Link.Replace("https://www.youtube.com/watch?v=", "");
+
+            Video.YoutubeEmbed = $"https://www.youtube.com/embed/{youtubeVideoId}";
             Video.VideoImage = $"https://img.youtube.com/vi/{youtubeVideoId}/hqdefault.jpg";
         }
 
@@ -65,11 +67,11 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:44300/favoritevideo/get/{videoId}/{userId}");
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5001/favoritevideo/get/{videoId}/{userId}");
 
-            var result = await response.Content.ReadAsStringAsync();
+            string result = await response.Content.ReadAsStringAsync();
 
-            Video.IsFavorite = Convert.ToBoolean(result);
+            Video.IsFavorite = result;
         }
     }
 }

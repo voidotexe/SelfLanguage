@@ -3,13 +3,17 @@
  * https://www.github.com/voidotexe
 */
 
-document.getElementById("star").addEventListener("click", postFavoriteVideo(favoriteVideoJson));
+var star = document.getElementById("star");
 
-function postFavoriteVideo(favoriteVideoJson) {
-    $.ajax({
-        url: "https://localhost:44300/favoritevideo/post",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(favoriteVideoJson)
-    });
+function handleFavoriteVideo(favoriteVideoJson) {
+  $.ajax({
+    url: "https://localhost:5001/favoritevideo/post",
+    type: "POST",
+    contentType: "application/json",
+    data: JSON.stringify(favoriteVideoJson)
+  });
 }
+
+star.addEventListener("click", function() {
+  handleFavoriteVideo(favoriteVideoJson);
+});

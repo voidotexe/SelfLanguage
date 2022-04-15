@@ -20,7 +20,7 @@ namespace SelfLanguage.Services
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:44379/transcription/post", content);
+            HttpResponseMessage response = await httpClient.PostAsync("https://localhost:5002/transcription/post", content);
 
             return response.StatusCode;
         }
