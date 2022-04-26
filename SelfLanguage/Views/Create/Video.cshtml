@@ -5,6 +5,10 @@
 
 @model VideoViewModel
 
+@{
+	ViewData["Title"] = "Criar vídeo";
+}
+
 <form asp-action="Video" asp-controller="Create">
 	<div>
 		<label for="video-link">Link</label>

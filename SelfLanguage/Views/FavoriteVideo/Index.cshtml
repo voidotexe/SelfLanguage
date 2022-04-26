@@ -6,18 +6,24 @@
 @model IEnumerable<FavoriteVideoViewModel>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Vídeos favoritos";
 }
 
 @foreach (var m in Model)
 {
+    string link = m.Link.Replace("https://www.youtube.com/watch?v=", "");
+
     <div class="card">
         <div class="card-body">
-            <p class="card-text">@m.Title</p>
-            <p class="card-text">@m.Link</p>
-            <p class="card-text">@m.Language</p>
-            <p class="card-text">@m.Difficulty</p>
-            <p class="card-text">@m.CreatedAt</p>
+            <a asp-action="Index" asp-controller="Video" asp-route-link="@link">
+                @m.Title
+            </a>
+            <br /><br />
+            <i class="fa-solid fa-globe"></i> @m.Language
+            <br />
+            <i class="fa-solid fa-brain"></i> @m.Difficulty
+            <br />
+            <i class="fa-solid fa-clock"></i> @m.CreatedAt
         </div>
     </div>
     <br>

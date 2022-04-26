@@ -6,20 +6,26 @@
 @model IEnumerable<VideoViewModel>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Início";
 }
 
 @foreach (var m in Model)
 {
-    var link = m.Link.Replace("https://www.youtube.com/watch?v=", "");
+    string link = m.Link.Replace("https://www.youtube.com/watch?v=", "");
+
     <div class="card">
         <div class="card-body">
             <img src="@m.VideoImage"/>
             <a asp-action="Index" asp-controller="Video" asp-route-link="@link">
                 <h4 class="card-title">@m.Title</h4>
             </a>
-            <p class="card-text">Idioma: @m.VideoLanguage | Dificuldade: @m.Difficulty</p>
-            <p class="card-text">Criação: @m.CreatedBy em @m.CreatedAt</p>
+            <i class="fa-solid fa-globe"></i> @m.VideoLanguage
+            <br />
+            <i class="fa-solid fa-brain"></i> @m.Difficulty
+            <br />
+            <i class="fa-solid fa-user"></i> @m.CreatedBy
+            <br />
+            <i class="fa-solid fa-clock"></i> @m.CreatedAt
         </div>
     </div>
     <br>

@@ -27,8 +27,14 @@
         <a href="@Model.Link" target="_blank">
             <h4 class="card-title">@Model.Title</h4>
         </a>
-        <p class="card-text">Idioma: @Model.VideoLanguage | Dificuldade: @Model.Difficulty</p>
-        <p class="card-text">Criação: @Model.CreatedBy em @Model.CreatedAt</p>
+        <i class="fa-solid fa-globe"></i> @Model.VideoLanguage
+        <br />
+        <i class="fa-solid fa-brain"></i> @Model.Difficulty
+        <br />
+        <i class="fa-solid fa-user"></i> @Model.CreatedBy
+        <br />
+        <i class="fa-solid fa-clock"></i> @Model.CreatedAt
+        <br /><br />
         <div>
             @Model.TranscriptionContent
         </div>
