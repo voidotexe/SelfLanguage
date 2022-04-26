@@ -43,6 +43,7 @@ namespace SelfLanguage
             services.AddScoped<IVideoService, VideoService>();
             services.AddScoped<ITranscriptionService, TranscriptionService>();
             services.AddScoped<ISubtitleService, SubtitleService>();
+            services.AddScoped<IFavoriteVideoService, FavoriteVideoService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -82,9 +83,15 @@ namespace SelfLanguage
                 );
 
                 endpoints.MapControllerRoute(
-                    name: "favoriteVideo",
+                    name: "postFavoriteVideo",
                     pattern: "video/favoritevideo",
                     defaults: new { controller = "Video", action = "FavoriteVideo" }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "favoriteVideos",
+                    pattern: "favoriteVideos",
+                    defaults: new { controller = "FavoriteVideo",  action = "Index" }
                 );
 
                 endpoints.MapControllerRoute(

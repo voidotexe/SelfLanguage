@@ -5,7 +5,6 @@
 
 using Newtonsoft.Json;
 using SelfLanguage.Models;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -51,7 +50,7 @@ namespace SelfLanguage.Services
         {
             var httpClient = new HttpClient();
 
-            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5002/video/get/{link}");
+            HttpResponseMessage response = await httpClient.GetAsync($"https://localhost:5002/video/get/bylink/{link}");
 
             string json = await response.Content.ReadAsStringAsync();
 
